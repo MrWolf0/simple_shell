@@ -6,7 +6,7 @@
  * @src: string to be copied
  *Return: Always 0.
  */
-char *my_strcpy(char *dest, char *src)
+char *_strcpy(char *dest, char *src)
 {
 int index = 0;
 while (src[index])

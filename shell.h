@@ -1,27 +1,24 @@
-/*
- * shell.h
- *
- *  Created on: Nov 28, 2023
- *      Author: nasser
- */
-
 #ifndef SHELL_H_
 #define SHELL_H_
-#define BUFFERSIZE 256
-#include <unistd.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/types.h>
+#include <unistd.h>
+#include <string.h>
 #include <sys/wait.h>
-void prompt();
-void readCommad();
-int gettingStrlen (char *s);
-void handleUserCommand(char *command);
-int path_handling(char *command_name, char **args);
-char *my_strdup(const char *source);
-char *my_strcpy(char *dest, char *src);
-void execute_command(char *args[]);
-void execute_command_helper(char *args[]);
-void input_processing();
+#include <sys/stat.h>
+char *_strcat(char *dest, char *src);
+int _strlen(char *s);
+int _strcmp(char *str1, char *str2);
+char *_strcpy(char *dest, char *src);
+char **tokanizer(char *str, char *deliamter);
+char *_strdup( char *source);
+char *_path( char *command);
+int execution(char **args);
+void print_env(void);
+void print_prompt(void);
+char* read_input(void);
+int is_line_empty(char *line);
+void handle_special_commands(char *line, int *exit_status);
+extern char **environ;
+void looping(void);
 #endif /* SHELL_H_ */

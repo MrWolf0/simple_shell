@@ -1,9 +1,10 @@
-
 #include "shell.h"
-#include <unistd.h>
-
-void prompt() {
-    char pound = '#';
-    write(STDOUT_FILENO,&pound,1);
-    readCommad();
+void print_prompt(void)
+{
+/*the isatty function returns 1 if the file*/
+/*descriptor is associated with*/
+/*a terminal and 0 otherwise */
+    if (isatty(0)) {
+        printf("$ ");
+    }
 }
