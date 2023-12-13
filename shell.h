@@ -20,5 +20,5 @@ char* read_input(void);
 int is_line_empty(char *line);
 void handle_special_commands(char *line, int *exit_status);
 extern char **environ;
-void looping(void);
+int looping(void);
 #endif /* SHELL_H_ */

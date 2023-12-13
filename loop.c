@@ -1,32 +1,45 @@
 #include "shell.h"
-void looping(void) {
-    char *buff;
-    int exit_status = 0;
+int looping(void) {
+char *buff = NULL, **args;
+	size_t read_size = 0;
+	ssize_t buff_size = 0;
+	int exit_status = 0;
 
-    while (1) {
-        print_prompt();
-        buff = read_input();
+	while (1)
+	{
+		if (isatty(0))
+			printf("hsh$ ");
 
-        if (buff == NULL) {
-            break;
-        }
+		buff_size = getline(&buff, &read_size, stdin);
+		if (buff_size == -1 || _strcmp("exit\n", buff) == 0)
+		{
+			free(buff);
+			break;
+		}
+		buff[buff_size - 1] = '\0';
 
-        handle_special_commands(buff, &exit_status);
+		if (_strcmp("env", buff) == 0)
+		{
+			print_env();
+			continue;
+		}
 
-        if (exit_status) {
-            /*tokenization and execution*/
-            char **args = tokanizer(buff, " ");
-            args[0] = _path(args[0]);
+		if (is_line_empty(buff) == 1)
+		{
+			exit_status = 0;
+			continue;
+		}
 
-            if (args[0] != NULL) {
-                exit_status = execution(args);
-            } else {
-                perror("Error");
-            }
+		args = tokanizer(buff, " ");
+		args[0] = _path(args[0]);
 
-            free(args);
-        }
-
-        free(buff);
-    }
+		if (args[0] != NULL)
+			exit_status = execution(args);
+		else
+			perror("Error");
+		free(args);
+	}
+	return (exit_status);
 }
+
+

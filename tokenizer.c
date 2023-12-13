@@ -13,15 +13,17 @@ char **tokanizer(char *str, char *deliamter)
 /* if an error free the memory */
 	if (!split)
 	{
-		free(split);
-		return (NULL);
+		 perror("Memory allocation error");
+       		 exit(EXIT_FAILURE);
 	}
 /*storing tokens into split*/
 	while (result)
 	{
+	   split[i] = _strdup(result);
 	    split[i] = result;
 		result = strtok(NULL, deliamter);
 		i++;
 	}
+	split[i] = NULL;
 	return (split);
 }
