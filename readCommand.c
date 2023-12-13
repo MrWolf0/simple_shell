@@ -1,5 +1,5 @@
 #include "shell.h"
-
+#include <stdlib.h>
 /**
  *readCommad - a function to read  user input
  *Return: always must be 0 in case you are using int if you using void
