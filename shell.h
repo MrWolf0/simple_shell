@@ -6,6 +6,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <sys/types.h>
 char *_strcat(char *dest, char *src);
 int _strlen(char *s);
 int _strcmp(char *str1, char *str2);

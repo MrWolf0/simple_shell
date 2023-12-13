@@ -8,7 +8,9 @@ char *buff = NULL, **args;
 	while (1)
 	{
 		if (isatty(0))
+		{
 			printf("$ ");
+		}
 
 		buff_size = getline(&buff, &read_size, stdin);
 		if (buff_size == -1 || _strcmp("exit\n", buff) == 0)
@@ -39,7 +41,7 @@ char *buff = NULL, **args;
 		}
 		else
 		{
-			exit_status = -1;
+			exit_status = 1;
 		}
 		free(args);
 	}
