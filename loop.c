@@ -34,9 +34,13 @@ char *buff = NULL, **args;
 		args[0] = _path(args[0]);
 
 		if (args[0] != NULL)
+		{
 			exit_status = execution(args);
+		}
 		else
-			perror("Error");
+		{
+			exit_status = -1;
+		}
 		free(args);
 	}
 	return (exit_status);
