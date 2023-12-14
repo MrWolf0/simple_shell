@@ -1,14 +1,16 @@
 #include "shell.h"
+
 /**
- * _env - prints environment
+ *print_env - print command path, child process
+ *Return: void
  */
 void print_env(void)
 {
-    extern char **environ;
-    int i = 0;
+	int i = 0;
 
-    while (environ[i] != NULL) {
-        printf("%s\n", environ[i]);
-        i++;
-    }
+	while (environ[i] != NULL)
+	{
+		printf("%s\n", environ[i]);
+		i++;
+	}
 }

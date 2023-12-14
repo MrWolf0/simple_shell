@@ -1,28 +1,37 @@
 #include "shell.h"
+
+/**
+ *_strdup - duplicate a command
+ *@source: arguments
+ *Return: deuplicated command
+ */
 char *_strdup(char *source)
 {
-   /*check if the source str == NULL */
-   size_t length ;
-   char *destination;
-    if (source == NULL) {
-        return (NULL);
-    }
+	/*check if the source str == NULL */
+	size_t length;
+	char *destination;
 
-    /* here we define an integer to hold the length */
-    /*of coming string +1 to null terminator*/
-     length = _strlen(source) + 1;
+	if (source == NULL)
+	{
+		return (NULL);
+	}
 
-    /* Allocate memory for the new string*/
-     destination = (char *)malloc(length);
+	/*here we define an integer to hold the length */
+	/*of coming string +1 to null terminator*/
+	length = _strlen(source) + 1;
 
-    /* Check if memory allocation was successful*/
-    if (destination == NULL) {
-        perror("Memory allocation failed\n");
-        return (NULL);
-    }
+	/*Allocate memory for the new string*/
+	destination = (char *) malloc(length);
 
-    /* Copy the content of the source string to the new memory*/
-    _strcpy(destination, source);
+	/*Check if memory allocation was successful*/
+	if (destination == NULL)
+	{
+		perror("Memory allocation failed\n");
+		return (NULL);
+	}
 
-    return (destination);
+	/*Copy the content of the source string to the new memory*/
+	_strcpy(destination, source);
+
+	return (destination);
 }
